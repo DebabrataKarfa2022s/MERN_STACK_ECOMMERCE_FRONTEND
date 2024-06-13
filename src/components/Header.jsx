@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { GrSearch } from "react-icons/gr";
-import { FaRegCircleUser } from "react-icons/fa6";
-import { FaShoppingCart } from "react-icons/fa";
+import {  FaShoppingCart, FaTimes } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SummaryApi from '../common/index';
@@ -9,13 +8,13 @@ import { toast } from 'react-toastify';
 import { setUserDetails } from '../store/userSlice';
 import ROLE from '../common/role';
 import Context from '../context';
-
 import logodk from "../assest/logo/logodk.png";
 
 const Header = () => {
   const user = useSelector(state => state?.user?.user);
   const dispatch = useDispatch();
   const [menuDisplay, setMenuDisplay] = useState(false);
+  const [mobileSearch, setMobileSearch] = useState(false);
   const context = useContext(Context);
   const navigate = useNavigate();
   const searchInput = useLocation();
@@ -53,11 +52,15 @@ const Header = () => {
     }
   }
 
+  const toggleMobileSearch = () => {
+    setMobileSearch(prevState => !prevState);
+  }
+
   return (
     <>
       <header className='h-16 shadow-md bg-white fixed w-full z-40'>
         <div className='h-full container mx-auto flex items-center px-4 justify-between'>
-          <div className=''>
+          <div>
             <Link to={"/"}>
               <img src={logodk} alt="logo" className='w-32 h-12' />
             </Link>
@@ -114,29 +117,28 @@ const Header = () => {
                 <Link to={"/login"} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</Link>
               )}
             </div>
+
+            {/* Mobile Search Icon */}
+            <div className='lg:hidden text-xl cursor-pointer' onClick={toggleMobileSearch}>
+              {mobileSearch ? <FaTimes /> : <GrSearch />}
+            </div>
           </div>
         </div>
       </header>
 
-      <div className='lg:hidden bg-white fixed w-full top-16 z-30 shadow-md'>
-
-        <div className='container mx-auto flex items-center px-4 py-2'>
-          {/* <input type='text' placeholder='Search product here...' className='w-full outline-none border rounded-full p-2' onChange={handleSearch} value={search} />
-          <div className='text-lg min-w-[50px] h-10 bg-red-600 cursor-pointer flex items-center justify-center rounded-full text-white ml-2'>
-            <GrSearch />
-          </div> */}
-          <input type='text' placeholder='Search product here...' className='w-full outline-none border p-1 rounded-l-full' onChange={handleSearch} value={search} />
+      {/* Mobile Search Bar */}
+      {mobileSearch && (
+        <div className='lg:hidden bg-white fixed w-full top-16 z-30 shadow-md'>
+          <div className='container mx-auto flex items-center px-4 py-2'>
+            <input type='text' placeholder='Search product here...' className='w-full outline-none border p-1 rounded-l-full' onChange={handleSearch} value={search} />
             <div className='text-lg min-w-[50px] h-8 bg-red-600 cursor-pointer flex items-center justify-center rounded-r-full text-white'>
               <GrSearch />
             </div>
-
-
+          </div>
         </div>
+      )}
 
-
-      </div>
-
-      <div className='lg:hidden pt-16'></div>
+      {/* <div className='lg:hidden pt-16'></div> */}
     </>
   );
 }
