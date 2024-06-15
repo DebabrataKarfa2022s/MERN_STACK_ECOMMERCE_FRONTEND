@@ -70,6 +70,7 @@ const MyOrders = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentOrders = orders.slice(indexOfFirstItem, indexOfLastItem);
+  console.log("currecent orders=", currentOrders)
 
   const totalPages = Math.ceil(orders.length / itemsPerPage);
 
@@ -108,7 +109,7 @@ const MyOrders = () => {
             <div key={order._id} className="border bg-white p-4 mb-4 rounded">
               <div className='flex justify-between'>
                 <h2 className="text-xl font-bold">Order #{order._id}</h2>
-                {order.deliveryStatus === 'Pending' && (
+                {order.deliveryStatus === 'Pending' && order.isPaid=== false && (
                   <button className='hidden md:block bg-red-500 rounded-full font-medium text-white p-2 hover:bg-red-700'
                     onClick={() => handleDeleteOrder(order._id)}>
                     Cancel Order
