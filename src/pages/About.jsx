@@ -1,4 +1,5 @@
 import React from 'react'
+import CEODK from "../assest/logo/CEODK1.jpg"
 
 const About = () => {
   return (
@@ -28,7 +29,7 @@ const About = () => {
           <h2 className="text-2xl font-bold mb-4">Meet the Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <img src="https://via.placeholder.com/150" alt="Team Member" className="rounded-full mx-auto mb-4"/>
+              <img src={CEODK} alt="Team Member" className="rounded-full mx-auto mb-4 h-40 w-40"/>
               <h3 className="text-xl font-semibold">DK</h3>
               <p className="text-gray-700">Founder & CEO</p>
             </div>
