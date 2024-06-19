@@ -123,10 +123,13 @@ const SummaryApi = {
     },
 
     // product api
+
+
     uploadProduct : {
         url : `${ProductbackendDomain}/upload-product`,
         method : 'post'
     },
+    
     allProduct : {
         url : `${ProductbackendDomain}/get-product`,
         method : 'get'
