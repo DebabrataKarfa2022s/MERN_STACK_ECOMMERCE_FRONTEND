@@ -2,6 +2,9 @@
 const UserbackendDomain = "/api/v1/users"
 const ProductbackendDomain="/api/v1/products"
 
+// const UserbackendDomain = "https://mern-stack-ecommerce-backend-1-nbca.onrender.com/api/v1/users"
+// const ProductbackendDomain="https://mern-stack-ecommerce-backend-1-nbca.onrender.com/api/v1/products"
+
 // http://localhost:8080/api/v1/users/register
 // http://localhost:8080/api/v1/products/upload-product
 
