@@ -8,9 +8,9 @@ export default defineConfig({
     open: true,
     hmr: true,
     historyApiFallback: true,
-    proxy: {
-      // "/api":"http://localhost:6080"
-      "/api": "https://mern-stack-ecommerce-backend-1-nbca.onrender.com",
-    },
+    // proxy: {
+    //   // "/api":"http://localhost:6080"
+    //   "/api": "https://mern-stack-ecommerce-backend-1-nbca.onrender.com",
+    // },
   },
 });
